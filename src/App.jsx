@@ -5,7 +5,9 @@ import StoreFront from "./components/StoreFront";
 import ItemDetails from "./components/ItemDetails";
 import { Routes, Route } from "react-router-dom";
 
-function App() {
+
+function App() {  
+
   return (
     <>
       <Header />

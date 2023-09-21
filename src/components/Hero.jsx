@@ -1,4 +1,5 @@
 import { Container, Typography, Button, Paper, Box } from "@mui/material";
+import { Link } from "react-router-dom";
 
 function Hero() {
   return (
@@ -38,7 +39,12 @@ function Hero() {
             The made-up source for all your fictional needs.
           </Typography>
           <Button variant="contained" sx={{ mt: 2 }}>
-            Shop All Items
+            <Link
+              to="/store"
+              style={{ textDecoration: "none", color: "inherit" }}
+            >
+              Shop All Items
+            </Link>
           </Button>
         </Container>
       </Paper>
