@@ -30,7 +30,7 @@ function StoreItem() {
           <hr />
           <Typography>Rating: 3.8</Typography>
           <Typography gutterBottom>Items Sold: 120</Typography>
-          <CardActions >
+          <CardActions sx={{ display: "flex", justifyContent: "flex-end" }}>
             <Button variant="outlined">Add to Cart</Button>
           </CardActions>
         </CardContent>

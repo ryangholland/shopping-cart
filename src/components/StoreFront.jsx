@@ -13,7 +13,7 @@ function StoreFront() {
       }}
     >
       <Container sx={{ py: 8 }} maxWidth="xl">
-        <Grid container spacing={4}>
+        <Grid container spacing={6}>
           <StoreItem />
           <StoreItem />
           <StoreItem />
