@@ -4,6 +4,7 @@ import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import RegNav from "./RegNav";
 import CartDrawer from "./CartDrawer";
+import { Link } from "react-router-dom";
 
 function Header() {
   const theme = useTheme();
@@ -17,7 +18,11 @@ function Header() {
             <MenuIcon fontSize="large" />
           </Button>
         )}
-        <Typography variant="h5">FakeMart</Typography>
+        <Typography variant="h5">
+          <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
+            FakeMart
+          </Link>
+        </Typography>
         {notMobile && <RegNav />}
         <CartDrawer />
       </Toolbar>

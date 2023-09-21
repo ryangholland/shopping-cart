@@ -1,9 +1,12 @@
 import { Link } from "@mui/material";
+import { Link as RouterLink } from "react-router-dom";
 
 function RegNav() {
   return (
     <nav>
       <Link
+        component={RouterLink}
+        to="/store"
         variant="button"
         color="inherit"
         href="#"

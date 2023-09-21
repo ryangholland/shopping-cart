@@ -1,13 +1,4 @@
-import {
-  Grid,
-  Card,
-  CardMedia,
-  CardContent,
-  Typography,
-  CardActions,
-  Button,
-  Box,
-} from "@mui/material";
+import { Card, CardMedia, CardContent, Button } from "@mui/material";
 
 function CartItem() {
   return (
@@ -26,12 +17,11 @@ function CartItem() {
         sx={{
           display: "flex",
           flexDirection: "column",
-          justifyContent: "space-around",
-          pb: 0,
+          justifyContent: "center",
+          pt: 4,
         }}
       >
-        <Typography>$X.XX</Typography>
-        <Button >Add/Remove</Button>
+        <Button>Counter Here</Button>
       </CardContent>
     </Card>
   );
