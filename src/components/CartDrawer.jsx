@@ -1,6 +1,7 @@
 import { Drawer, Button, Box, Typography } from "@mui/material";
 import { useState } from "react";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import CartItem from "./CartItem";
 
 function CartDrawer() {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,6 +18,7 @@ function CartDrawer() {
           <Typography gutterBottom mt={3}>
             There's nothing here!
           </Typography>
+          <CartItem />
           <Box sx={{mt:3, display: "flex", justifyContent: "space-between"}}>
             <Button variant="outlined" color="error" onClick={() => setIsOpen(false)}>Close Cart</Button>
             <Button variant="contained" color="success">Checkout</Button>
