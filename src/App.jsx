@@ -1,13 +1,11 @@
-import Button from '@mui/material/Button';
+import Navbar from "./components/Navbar";
 
 function App() {
-
-
   return (
     <>
-      <Button variant="contained">HEllo WoRlD.</Button>
+      <Navbar />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
