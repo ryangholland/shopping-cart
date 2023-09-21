@@ -13,7 +13,7 @@ function Header() {
 
   return (
     <AppBar position="static">
-      <Toolbar sx={{ justifyContent: "space-between", p:1.25 }}>
+      <Toolbar sx={{ justifyContent: "space-between", p:0.5 }}>
         {!notMobile && (<Button color="inherit" ><MenuIcon fontSize="large" /></Button>)}
         <Typography variant="h5">FakeMart</Typography>
         {notMobile && <RegNav />}
