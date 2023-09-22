@@ -1,6 +1,7 @@
-import { Card, CardMedia, CardContent, Button } from "@mui/material";
+import { Card, CardMedia, CardContent } from "@mui/material";
+import CartCounter from "./CartCounter";
 
-function CartItem() {
+function CartItem({ details, handleAddProduct, handleRemoveProduct }) {
   return (
     <Card raised sx={{ my: 3, display: "flex", justifyContent: "center" }}>
       <CardMedia
@@ -8,10 +9,10 @@ function CartItem() {
         sx={{
           maxWidth: "60px",
           height: "auto",
-          m: 2,
+          m: 1,
           objectFit: "scale-down",
         }}
-        image="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
+        image={details.image}
       />
       <CardContent
         sx={{
@@ -21,7 +22,11 @@ function CartItem() {
           pt: 4,
         }}
       >
-        <Button>Counter Here</Button>
+        <CartCounter
+                details={details}
+                handleAddProduct={handleAddProduct}
+                handleRemoveProduct={handleRemoveProduct}
+              />
       </CardContent>
     </Card>
   );

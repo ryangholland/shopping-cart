@@ -1,10 +1,10 @@
-import { Typography, Button } from "@mui/material";
+import { Typography, Button, Box } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 
 function CartCounter({details, handleAddProduct, handleRemoveProduct}) {
   return (
-    <>
+    <Box sx={{display: "flex"}}>
       <Button
         variant="contained"
         color="error"
@@ -22,7 +22,7 @@ function CartCounter({details, handleAddProduct, handleRemoveProduct}) {
       >
         <AddIcon />
       </Button>
-    </>
+    </Box>
   );
 }
 

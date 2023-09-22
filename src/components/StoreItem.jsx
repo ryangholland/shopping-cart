@@ -49,7 +49,7 @@ function StoreItem({ details, handleAddProduct, handleRemoveProduct }) {
           <Typography gutterBottom>
             Items Sold: {details.rating.count}
           </Typography>
-          <CardActions>
+          <CardActions sx={{display: "flex"}}>
             {details.inCart === 0 && (
               <Button
                 variant="outlined"

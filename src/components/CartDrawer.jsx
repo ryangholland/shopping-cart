@@ -5,15 +5,12 @@ import CartItem from "./CartItem";
 
 function CartDrawer({ products, handleAddProduct, handleRemoveProduct }) {
   const [isOpen, setIsOpen] = useState(false);
+  const totalInCart = products.reduce((a, b) => a + b.inCart, 0);
 
   return (
     <>
       <Button color="inherit" onClick={() => setIsOpen(true)}>
-        <Badge
-          badgeContent={products.reduce((a, b) => a + b.inCart, 0)}
-          color="success"
-          max={99}
-        >
+        <Badge badgeContent={totalInCart} color="success" max={99}>
           <ShoppingCartIcon fontSize="large" />
         </Badge>
       </Button>
@@ -21,10 +18,24 @@ function CartDrawer({ products, handleAddProduct, handleRemoveProduct }) {
         <Box sx={{ width: "350px", textAlign: "center", p: 4 }}>
           <Typography variant="h5">Your Cart</Typography>
           <hr />
-          <Typography gutterBottom mt={3}>
-            There's nothing here!
-          </Typography>
-          <CartItem />
+          {totalInCart === 0 && (
+            <Typography gutterBottom mt={3}>
+              There's nothing here!
+            </Typography>
+          )}
+          {totalInCart > 0 &&
+            products.map((product) => {
+              if (product.inCart > 0) {
+                return (
+                  <CartItem
+                    key={product.id}
+                    details={product}
+                    handleAddProduct={handleAddProduct}
+                    handleRemoveProduct={handleRemoveProduct}
+                  />
+                );
+              }
+            })}
           <Box sx={{ mt: 3, display: "flex", justifyContent: "space-between" }}>
             <Button
               variant="outlined"
@@ -33,7 +44,8 @@ function CartDrawer({ products, handleAddProduct, handleRemoveProduct }) {
             >
               Close Cart
             </Button>
-            <Button variant="contained" color="success">
+            
+            <Button variant="contained" color="success" disabled={totalInCart === 0}>
               Checkout
             </Button>
           </Box>
