@@ -6,7 +6,7 @@ function RegNav() {
     <nav>
       <Link
         component={RouterLink}
-        to="/products"
+        to="/products/all"
         variant="button"
         color="inherit"
         href="#"
@@ -16,6 +16,8 @@ function RegNav() {
         All
       </Link>
       <Link
+        component={RouterLink}
+        to="/products/womens"
         variant="button"
         color="inherit"
         href="#"
@@ -25,6 +27,8 @@ function RegNav() {
         Women's
       </Link>
       <Link
+        component={RouterLink}
+        to="/products/mens"
         variant="button"
         color="inherit"
         href="#"
@@ -34,6 +38,8 @@ function RegNav() {
         Men's
       </Link>
       <Link
+        component={RouterLink}
+        to="/products/jewelry"
         variant="button"
         color="inherit"
         href="#"
@@ -43,6 +49,8 @@ function RegNav() {
         Jewelry
       </Link>
       <Link
+        component={RouterLink}
+        to="/products/electronics"
         variant="button"
         color="inherit"
         href="#"
