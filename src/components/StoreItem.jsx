@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 import { Link } from "react-router-dom";
 
-function StoreItem({ details }) {
+function StoreItem({ details, handleAddProduct, handleRemoveProduct }) {
   return (
     <Grid item xs={12} sm={12} md={6} xl={4}>
       <Card raised sx={{ display: "flex" }}>
@@ -46,8 +46,8 @@ function StoreItem({ details }) {
           <Typography gutterBottom>
             Items Sold: {details.rating.count}
           </Typography>
-          <CardActions sx={{ display: "flex", justifyContent: "flex-end" }}>
-            <Button variant="outlined">Add to Cart</Button>
+          <CardActions >
+            <Button variant="outlined" onClick={() => handleAddProduct(details.id)}>Add to Cart</Button>
           </CardActions>
         </CardContent>
       </Card>

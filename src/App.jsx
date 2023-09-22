@@ -6,37 +6,67 @@ import ItemDetails from "./components/ItemDetails";
 import { Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
 import AllItems from "./components/store_views/AllItems";
-import Womens from "./components/store_views/Womens"
+import Womens from "./components/store_views/Womens";
 import Mens from "./components/store_views/Mens";
 import Jewelry from "./components/store_views/Jewelry";
 import Electronics from "./components/store_views/Electronics";
 
-
-function App() {  
+function App() {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
     fetch("https://fakestoreapi.com/products")
       .then((response) => response.json())
       .then((data) => {
+        data.forEach((product) => {
+          product.inCart = 0;
+        });
         setProducts(data);
       });
   }, []);
+
+  const handleAddProduct = (id) => {
+    const newProducts = products.map((product) => {
+      if (product.id === id) product.inCart += 1;
+      return product;
+    });
+    setProducts(newProducts);
+    console.log(products)
+  };
+
+  const handleRemoveProduct = (id) => {
+    const newProducts = products.map((product) => {
+      if (product.id === id && product.inCart > 0) product.inCart -= 1;
+    });
+    setProducts(newProducts);
+  };
 
   return (
     <>
       <Header />
       <Routes>
         <Route path="/" element={<Hero />} />
-        <Route path="/products" element={<StoreFront products={products} />}>
-         <Route path="all" element={<AllItems />} />
+        <Route
+          path="/products"
+          element={
+            <StoreFront
+              products={products}
+              handleAddProduct={handleAddProduct}
+              handleRemoveProduct={handleRemoveProduct}
+            />
+          }
+        >
+          <Route path="all" element={<AllItems />} />
           <Route path="womens" element={<Womens />} />
           <Route path="mens" element={<Mens />} />
           <Route path="jewelry" element={<Jewelry />} />
           <Route path="electronics" element={<Electronics />} />
         </Route>
-        <Route path="/products/:id" element={<ItemDetails products={products} />} />
-        {/* <ItemDetails />*/}
+        <Route
+          path="/products/:id"
+          element={<ItemDetails products={products} />}
+        />
+
       </Routes>
       <Footer />
     </>

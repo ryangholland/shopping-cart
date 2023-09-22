@@ -40,7 +40,7 @@ function Hero() {
           </Typography>
           <Button variant="contained" sx={{ mt: 2 }}>
             <Link
-              to="/products"
+              to="/products/all"
               style={{ textDecoration: "none", color: "inherit" }}
             >
               Shop All Items

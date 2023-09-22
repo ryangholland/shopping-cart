@@ -3,7 +3,7 @@ import StoreItem from "../StoreItem";
 import { useOutletContext } from "react-router-dom";
 
 function AllItems() {
-  const products = useOutletContext();
+  const [products, handleAddProduct, handleRemoveProduct] = useOutletContext();
 
   return (
     <>
@@ -12,7 +12,12 @@ function AllItems() {
       </Typography>
       <Grid container spacing={6}>
         {products.map((product) => (
-          <StoreItem key={product.id} details={product} />
+          <StoreItem
+            key={product.id}
+            details={product}
+            handleAddProduct={handleAddProduct}
+            handleRemoveProduct={handleRemoveProduct}
+          />
         ))}
       </Grid>
     </>

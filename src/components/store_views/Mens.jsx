@@ -3,7 +3,7 @@ import StoreItem from "../StoreItem";
 import { useOutletContext } from "react-router-dom";
 
 function Mens() {
-  const products = useOutletContext();
+  const [products, handleAddProduct, handleRemoveProduct] = useOutletContext();
 
   return (
     <>

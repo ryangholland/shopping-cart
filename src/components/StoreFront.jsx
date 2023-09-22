@@ -2,7 +2,7 @@ import { Box, Container, Grid, Typography } from "@mui/material";
 import StoreItem from "./StoreItem";
 import {Outlet} from "react-router-dom"
 
-function StoreFront({ products }) {
+function StoreFront({ products, handleAddProduct, handleRemoveProduct }) {
   
   return (
     <Box
@@ -14,7 +14,7 @@ function StoreFront({ products }) {
       }}
     >
       <Container sx={{ py: 8 }} maxWidth="xl">
-        <Outlet context={products} />
+        <Outlet context={[products, handleAddProduct, handleRemoveProduct]} />
 
       </Container>
     </Box>
