@@ -56,7 +56,11 @@ function App() {
 
   return (
     <>
-      <Header />
+      <Header
+        products={products}
+        handleAddProduct={handleAddProduct}
+        handleRemoveProduct={handleRemoveProduct}
+      />
       <Routes>
         <Route path="/" element={<Hero />} />
         <Route
