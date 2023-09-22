@@ -6,7 +6,7 @@ function RegNav() {
     <nav>
       <Link
         component={RouterLink}
-        to="/store"
+        to="/products"
         variant="button"
         color="inherit"
         href="#"

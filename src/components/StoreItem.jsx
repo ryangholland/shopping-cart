@@ -7,9 +7,9 @@ import {
   CardActions,
   Button,
 } from "@mui/material";
+import { Link } from "react-router-dom";
 
-function StoreItem({details}) {
-  console.log(details)
+function StoreItem({ details }) {
   return (
     <Grid item xs={12} sm={12} md={6} xl={4}>
       <Card raised sx={{ display: "flex" }}>
@@ -24,13 +24,28 @@ function StoreItem({details}) {
           image={details.image}
         />
         <CardContent>
-          <Typography variant="h6" gutterBottom>
-            {details.title}
+          <Typography
+            variant="h6"
+            gutterBottom
+            sx={{
+              "&:hover": {
+                textDecoration: "underline",
+              },
+            }}
+          >
+            <Link
+              to={`/products/${details.id}`}
+              style={{ textDecoration: "none", color: "inherit" }}
+            >
+              {details.title}
+            </Link>
           </Typography>
           <Typography>Price: ${details.price}</Typography>
           <hr />
           <Typography>Rating: {details.rating.rate}</Typography>
-          <Typography gutterBottom>Items Sold: {details.rating.count}</Typography>
+          <Typography gutterBottom>
+            Items Sold: {details.rating.count}
+          </Typography>
           <CardActions sx={{ display: "flex", justifyContent: "flex-end" }}>
             <Button variant="outlined">Add to Cart</Button>
           </CardActions>

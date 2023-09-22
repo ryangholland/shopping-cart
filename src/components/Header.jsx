@@ -11,7 +11,7 @@ function Header() {
   const notMobile = useMediaQuery(theme.breakpoints.up("sm"));
 
   return (
-    <AppBar position="static">
+    <AppBar position="fixed">
       <Toolbar sx={{ justifyContent: "space-between", p: 0.5 }}>
         {!notMobile && (
           <Button color="inherit">

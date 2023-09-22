@@ -11,10 +11,17 @@ import {
 
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import { useParams } from "react-router-dom";
 
-function ItemDetails() {
+function ItemDetails({ products }) {
   const theme = useTheme();
   const notMobile = useMediaQuery(theme.breakpoints.up("sm"));
+
+  const params = useParams();
+
+  const details = products.filter((product) => {
+    return product.id === +params.id
+  })[0];
 
   return (
     <Box
@@ -36,7 +43,7 @@ function ItemDetails() {
             alignItems: "center",
             gap: 4,
             p: 2,
-            my: 2
+            my: 2,
           }}
         >
           <CardMedia
@@ -47,20 +54,19 @@ function ItemDetails() {
               m: 1,
               objectFit: "scale-down",
             }}
-            image="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
+            image={details.image}
           />
           <CardContent>
             <Typography variant="h4" gutterBottom>
-              Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops
+              {details.title}
             </Typography>
             <Typography gutterBottom>
-              Your perfect pack for everyday use and walks in the forest. Stash
-              your laptop (up to 15 inches) in the padded sleeve, your everyday
+              {details.description}
             </Typography>
-            <Typography variant="h6">Price: $100.00</Typography>
+            <Typography variant="h6">Price: ${details.price}</Typography>
             <hr />
-            <Typography>Rating: 3.8</Typography>
-            <Typography gutterBottom>Items Sold: 120</Typography>
+            <Typography>Rating: {details.rating.rate}</Typography>
+            <Typography gutterBottom>Items Sold: {details.rating.count}</Typography>
             <CardActions sx={{ display: "flex", justifyContent: "center" }}>
               <Button variant="outlined" size="large">
                 Add to Cart

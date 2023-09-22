@@ -9,7 +9,7 @@ function Hero() {
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        minHeight: "90vh",
+        minHeight: "100vh",
         backgroundImage: `url(./public/herobg.webp)`,
         backgroundSize: "cover",
       }}
@@ -40,7 +40,7 @@ function Hero() {
           </Typography>
           <Button variant="contained" sx={{ mt: 2 }}>
             <Link
-              to="/store"
+              to="/products"
               style={{ textDecoration: "none", color: "inherit" }}
             >
               Shop All Items
