@@ -13,7 +13,14 @@ function Electronics() {
       <Grid container spacing={6}>
         {products.map((product) => {
           if (product.category === "electronics")
-            return <StoreItem key={product.id} details={product} />;
+            return (
+              <StoreItem
+                key={product.id}
+                details={product}
+                handleAddProduct={handleAddProduct}
+                handleRemoveProduct={handleRemoveProduct}
+              />
+            );
         })}
       </Grid>
     </>

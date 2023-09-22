@@ -15,13 +15,26 @@ function App() {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch("https://fakestoreapi.com/products")
+    fetch("https://fakestoreapi.com/products", { mode: "no-cors" })
       .then((response) => response.json())
       .then((data) => {
         data.forEach((product) => {
           product.inCart = 0;
         });
         setProducts(data);
+      })
+      .catch((error) => {
+        console.log(error);
+        console.log("Fetch error. Generating test item...");
+        setProducts([
+          {
+            id: 1,
+            title: "Test",
+            price: "9.99",
+            rating: { rate: 4.0, count: 500 },
+            inCart: 0,
+          },
+        ]);
       });
   }, []);
 
@@ -31,12 +44,12 @@ function App() {
       return product;
     });
     setProducts(newProducts);
-    console.log(products)
   };
 
   const handleRemoveProduct = (id) => {
     const newProducts = products.map((product) => {
-      if (product.id === id && product.inCart > 0) product.inCart -= 1;
+      if (product.id === id) product.inCart -= 1;
+      return product;
     });
     setProducts(newProducts);
   };
@@ -66,7 +79,6 @@ function App() {
           path="/products/:id"
           element={<ItemDetails products={products} />}
         />
-
       </Routes>
       <Footer />
     </>

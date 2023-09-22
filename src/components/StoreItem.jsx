@@ -8,6 +8,8 @@ import {
   Button,
 } from "@mui/material";
 import { Link } from "react-router-dom";
+import AddIcon from '@mui/icons-material/Add';
+import RemoveIcon from '@mui/icons-material/Remove';
 
 function StoreItem({ details, handleAddProduct, handleRemoveProduct }) {
   return (
@@ -47,7 +49,14 @@ function StoreItem({ details, handleAddProduct, handleRemoveProduct }) {
             Items Sold: {details.rating.count}
           </Typography>
           <CardActions >
-            <Button variant="outlined" onClick={() => handleAddProduct(details.id)}>Add to Cart</Button>
+            {details.inCart === 0 && <Button variant="outlined" onClick={() => handleAddProduct(details.id)}>Add to Cart</Button>}
+            {details.inCart > 0 && (
+              <>
+                <Button variant="contained" color="error" onClick={() => handleRemoveProduct(details.id)}><RemoveIcon /></Button>
+                <Typography variant="h6" ml={2} mr={1}>{details.inCart}</Typography>
+                <Button variant="contained" color="success" onClick={() => handleAddProduct(details.id)}><AddIcon /></Button>
+              </>
+            )}
           </CardActions>
         </CardContent>
       </Card>

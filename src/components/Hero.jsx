@@ -10,7 +10,7 @@ function Hero() {
         justifyContent: "center",
         alignItems: "center",
         minHeight: "100vh",
-        backgroundImage: `url(./public/herobg.webp)`,
+        backgroundImage: `url(./herobg.webp)`,
         backgroundSize: "cover",
       }}
     >
