@@ -12,7 +12,7 @@ function CartCounter({details, handleAddProduct, handleRemoveProduct}) {
       >
         <RemoveIcon />
       </Button>
-      <Typography variant="h6" ml={2} mr={1}>
+      <Typography variant="h6" ml={2} mr={2}>
         {details.inCart}
       </Typography>
       <Button

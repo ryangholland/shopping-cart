@@ -81,7 +81,13 @@ function App() {
         </Route>
         <Route
           path="/products/:id"
-          element={<ItemDetails products={products} />}
+          element={
+            <ItemDetails
+              products={products}
+              handleAddProduct={handleAddProduct}
+              handleRemoveProduct={handleRemoveProduct}
+            />
+          }
         />
       </Routes>
       <Footer />

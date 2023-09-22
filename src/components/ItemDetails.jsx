@@ -12,8 +12,9 @@ import {
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useParams } from "react-router-dom";
+import CartCounter from "./CartCounter";
 
-function ItemDetails({ products }) {
+function ItemDetails({ products, handleAddProduct, handleRemoveProduct }) {
   const theme = useTheme();
   const notMobile = useMediaQuery(theme.breakpoints.up("sm"));
 
@@ -67,11 +68,23 @@ function ItemDetails({ products }) {
             <hr />
             <Typography>Rating: {details.rating.rate}</Typography>
             <Typography gutterBottom>Items Sold: {details.rating.count}</Typography>
-            <CardActions sx={{ display: "flex", justifyContent: "center" }}>
-              <Button variant="outlined" size="large">
+            <CardActions sx={{display: "flex"}}>
+            {details.inCart === 0 && (
+              <Button
+                variant="outlined"
+                onClick={() => handleAddProduct(details.id)}
+              >
                 Add to Cart
               </Button>
-            </CardActions>
+            )}
+            {details.inCart > 0 && (
+              <CartCounter
+                details={details}
+                handleAddProduct={handleAddProduct}
+                handleRemoveProduct={handleRemoveProduct}
+              />
+            )}
+          </CardActions>
           </CardContent>
         </Card>
       </Container>
