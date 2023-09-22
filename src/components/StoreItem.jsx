@@ -8,8 +8,9 @@ import {
   Button,
 } from "@mui/material";
 import { Link } from "react-router-dom";
-import AddIcon from '@mui/icons-material/Add';
-import RemoveIcon from '@mui/icons-material/Remove';
+import AddIcon from "@mui/icons-material/Add";
+import RemoveIcon from "@mui/icons-material/Remove";
+import CartCounter from "./CartCounter";
 
 function StoreItem({ details, handleAddProduct, handleRemoveProduct }) {
   return (
@@ -48,14 +49,21 @@ function StoreItem({ details, handleAddProduct, handleRemoveProduct }) {
           <Typography gutterBottom>
             Items Sold: {details.rating.count}
           </Typography>
-          <CardActions >
-            {details.inCart === 0 && <Button variant="outlined" onClick={() => handleAddProduct(details.id)}>Add to Cart</Button>}
+          <CardActions>
+            {details.inCart === 0 && (
+              <Button
+                variant="outlined"
+                onClick={() => handleAddProduct(details.id)}
+              >
+                Add to Cart
+              </Button>
+            )}
             {details.inCart > 0 && (
-              <>
-                <Button variant="contained" color="error" onClick={() => handleRemoveProduct(details.id)}><RemoveIcon /></Button>
-                <Typography variant="h6" ml={2} mr={1}>{details.inCart}</Typography>
-                <Button variant="contained" color="success" onClick={() => handleAddProduct(details.id)}><AddIcon /></Button>
-              </>
+              <CartCounter
+                details={details}
+                handleAddProduct={handleAddProduct}
+                handleRemoveProduct={handleRemoveProduct}
+              />
             )}
           </CardActions>
         </CardContent>

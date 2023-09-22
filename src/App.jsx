@@ -15,7 +15,7 @@ function App() {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch("https://fakestoreapi.com/products", { mode: "no-cors" })
+    fetch("https://fakestoreapi.com/products")
       .then((response) => response.json())
       .then((data) => {
         data.forEach((product) => {
