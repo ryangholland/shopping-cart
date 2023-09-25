@@ -11,7 +11,7 @@ function CartDrawer({
 }) {
   const [isOpen, setIsOpen] = useState(false);
   const totalInCart = products.reduce((a, b) => a + b.inCart, 0);
-  const totalPrice = products.reduce((a, b) => a + (b.inCart * b.price), 0);
+  const totalPrice = products.reduce((a, b) => a + b.inCart * b.price, 0);
 
   return (
     <>
@@ -64,7 +64,12 @@ function CartDrawer({
             </Typography>
           )}
           <Box sx={{ mt: 2, display: "flex", justifyContent: "space-between" }}>
-            <Button variant="contained" color="error" onClick={handleClearCart}>
+            <Button
+              variant="contained"
+              color="error"
+              onClick={handleClearCart}
+              disabled={totalInCart === 0}
+            >
               Clear Cart
             </Button>
 
