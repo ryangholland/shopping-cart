@@ -54,12 +54,21 @@ function App() {
     setProducts(newProducts);
   };
 
+  const handleClearCart = () => {
+    const newProducts = products.map((product) => {
+      product.inCart = 0;
+      return product;
+    });
+    setProducts(newProducts);
+  };
+
   return (
     <>
       <Header
         products={products}
         handleAddProduct={handleAddProduct}
         handleRemoveProduct={handleRemoveProduct}
+        handleClearCart={handleClearCart}
       />
       <Routes>
         <Route path="/" element={<Hero />} />

@@ -3,7 +3,7 @@ import { useState } from "react";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import CartItem from "./CartItem";
 
-function CartDrawer({ products, handleAddProduct, handleRemoveProduct }) {
+function CartDrawer({ products, handleAddProduct, handleRemoveProduct, handleClearCart }) {
   const [isOpen, setIsOpen] = useState(false);
   const totalInCart = products.reduce((a, b) => a + b.inCart, 0);
 
@@ -56,7 +56,7 @@ function CartDrawer({ products, handleAddProduct, handleRemoveProduct }) {
             <Button
               variant="contained"
               color="error"
-              onClick={() => setIsOpen(false)}
+              onClick={handleClearCart}
             >
               Clear Cart
             </Button>

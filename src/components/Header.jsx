@@ -6,7 +6,7 @@ import RegNav from "./RegNav";
 import CartDrawer from "./CartDrawer";
 import { Link } from "react-router-dom";
 
-function Header({ products, handleAddProduct, handleRemoveProduct }) {
+function Header({ products, handleAddProduct, handleRemoveProduct, handleClearCart }) {
   const theme = useTheme();
   const notMobile = useMediaQuery(theme.breakpoints.up("sm"));
 
@@ -28,6 +28,7 @@ function Header({ products, handleAddProduct, handleRemoveProduct }) {
           products={products}
           handleAddProduct={handleAddProduct}
           handleRemoveProduct={handleRemoveProduct}
+          handleClearCart={handleClearCart}
         />
       </Toolbar>
     </AppBar>
