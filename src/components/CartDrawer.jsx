@@ -3,9 +3,15 @@ import { useState } from "react";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import CartItem from "./CartItem";
 
-function CartDrawer({ products, handleAddProduct, handleRemoveProduct, handleClearCart }) {
+function CartDrawer({
+  products,
+  handleAddProduct,
+  handleRemoveProduct,
+  handleClearCart,
+}) {
   const [isOpen, setIsOpen] = useState(false);
   const totalInCart = products.reduce((a, b) => a + b.inCart, 0);
+  const totalPrice = products.reduce((a, b) => a + (b.inCart * b.price), 0);
 
   return (
     <>
@@ -52,12 +58,13 @@ function CartDrawer({ products, handleAddProduct, handleRemoveProduct, handleCle
                 );
               }
             })}
+          {totalInCart > 0 && (
+            <Typography variant="h6" my={1}>
+              Total: ${totalPrice.toFixed(2)}
+            </Typography>
+          )}
           <Box sx={{ mt: 2, display: "flex", justifyContent: "space-between" }}>
-            <Button
-              variant="contained"
-              color="error"
-              onClick={handleClearCart}
-            >
+            <Button variant="contained" color="error" onClick={handleClearCart}>
               Clear Cart
             </Button>
 
