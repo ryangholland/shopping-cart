@@ -3,7 +3,7 @@ import CartCounter from "./CartCounter";
 
 function CartItem({ details, handleAddProduct, handleRemoveProduct }) {
   return (
-    <Card raised sx={{ my: 3, display: "flex", justifyContent: "center" }}>
+    <Card raised sx={{ my: 2, display: "flex", justifyContent: "center" }}>
       <CardMedia
         component="img"
         sx={{

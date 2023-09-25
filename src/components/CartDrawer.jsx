@@ -15,11 +15,27 @@ function CartDrawer({ products, handleAddProduct, handleRemoveProduct }) {
         </Badge>
       </Button>
       <Drawer anchor="right" open={isOpen} onClose={() => setIsOpen(false)}>
-        <Box sx={{ width: "350px", textAlign: "center", p: 4 }}>
+        <Box
+          sx={{
+            width: "350px",
+            textAlign: "center",
+            p: 4,
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
+          <Button
+            variant="outlined"
+            color="error"
+            sx={{ alignSelf: "flex-end", mb: 2 }}
+            onClick={() => setIsOpen(false)}
+          >
+            X
+          </Button>
           <Typography variant="h5">Your Cart</Typography>
           <hr />
           {totalInCart === 0 && (
-            <Typography gutterBottom mt={3}>
+            <Typography gutterBottom mt={2}>
               There's nothing here!
             </Typography>
           )}
@@ -36,16 +52,20 @@ function CartDrawer({ products, handleAddProduct, handleRemoveProduct }) {
                 );
               }
             })}
-          <Box sx={{ mt: 3, display: "flex", justifyContent: "space-between" }}>
+          <Box sx={{ mt: 2, display: "flex", justifyContent: "space-between" }}>
             <Button
-              variant="outlined"
+              variant="contained"
               color="error"
               onClick={() => setIsOpen(false)}
             >
-              Close Cart
+              Clear Cart
             </Button>
-            
-            <Button variant="contained" color="success" disabled={totalInCart === 0}>
+
+            <Button
+              variant="contained"
+              color="success"
+              disabled={totalInCart === 0}
+            >
               Checkout
             </Button>
           </Box>
